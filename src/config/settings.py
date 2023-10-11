@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     API_V1_STR: str = f"/api/{API_VERSION}"
     PROJECT_NAME: str = "FastAPI"
     DEBUG: bool = False
-    DATABASE_USER: str = "postgres"
+    DATABASE_USERNAME: str = "postgres"
     DATABASE_PASSWORD: str = "postgres"
     DATABASE_HOST: str = "localhost"
     DATABASE_PORT: int = 5432
@@ -39,7 +39,7 @@ class Settings(BaseSettings):
             scheme="postgresql+asyncpg",
             host=self.DATABASE_HOST,
             port=self.DATABASE_PORT,
-            username=self.DATABASE_USER,
+            username=self.DATABASE_USERNAME,
             password=self.DATABASE_PASSWORD,
             path=self.DATABASE_NAME,
         )
@@ -50,7 +50,7 @@ class Settings(BaseSettings):
             scheme="postgres",
             host=self.DATABASE_HOST,
             port=self.DATABASE_PORT,
-            username=self.DATABASE_USER,
+            username=self.DATABASE_USERNAME,
             password=self.DATABASE_PASSWORD,
             path=self.DATABASE_NAME,
         )
