@@ -28,12 +28,30 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 120
-target-version = [ "py310", "py311" ]
-exclude = "((.eggs | .git | .pytest_cache | build | dist))"
+target-version = [ "py311" ]
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
 
 [tool.ruff]
 line-length = 120
-exclude = [".git", "__pycache__", ".mypy_cache", ".pytest_cache"]
+exclude = [
+  ".git", "__pycache__", ".mypy_cache", ".pytest_cache",
+  "src/db/migrations/*",
+]
 select = [
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
