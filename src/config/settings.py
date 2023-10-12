@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+from datetime import timedelta
 from enum import Enum
 from functools import lru_cache
 
@@ -9,6 +11,14 @@ class ModeEnum(str, Enum):
     development = "development"
     production = "production"
     testing = "testing"
+
+
+@dataclass
+class JWTConfig:
+    secret_key: str
+    algorithm: str
+    access_token_ttl: timedelta = None
+    refresh_token_ttl: timedelta = None
 
 
 class Settings(BaseSettings):
@@ -27,11 +37,17 @@ class Settings(BaseSettings):
     API_V1_STR: str = f"/api/{API_VERSION}"
     PROJECT_NAME: str = "FastAPI"
     DEBUG: bool = False
+
     DATABASE_USERNAME: str = "postgres"
     DATABASE_PASSWORD: str = "postgres"
     DATABASE_HOST: str = "localhost"
     DATABASE_PORT: int = 5432
     DATABASE_NAME: str = "postgres"
+
+    JWT_SECRET_KEY: str = "secret"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_ACCESS_TOKEN_TTL_SECONDS: int = 3600
+    JWT_REFRESH_TOKEN_TTL_SECONDS: int = 86400
 
     @property
     def async_postgres_url(self) -> PostgresDsn:
@@ -53,6 +69,15 @@ class Settings(BaseSettings):
             username=self.DATABASE_USERNAME,
             password=self.DATABASE_PASSWORD,
             path=self.DATABASE_NAME,
+        )
+
+    @property
+    def jwt_config(self) -> JWTConfig:
+        return JWTConfig(
+            secret_key=self.JWT_SECRET_KEY,
+            algorithm=self.JWT_ALGORITHM,
+            access_token_ttl=timedelta(seconds=self.JWT_ACCESS_TOKEN_TTL_SECONDS),
+            refresh_token_ttl=timedelta(seconds=self.JWT_REFRESH_TOKEN_TTL_SECONDS),
         )
 
 

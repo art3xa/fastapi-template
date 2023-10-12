@@ -163,4 +163,4 @@ cython_debug/
 #.idea/
 
 # Postgres
-db_docker
+postgresql_data
