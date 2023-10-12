@@ -15,6 +15,7 @@ class ModeEnum(str, Enum):
 
 @dataclass
 class JWTConfig:
+    issuer: str
     secret_key: str
     algorithm: str
     access_token_ttl: timedelta = None
@@ -45,6 +46,7 @@ class Settings(BaseSettings):
     DATABASE_NAME: str = "postgres"
 
     JWT_SECRET_KEY: str = "secret"
+    JWT_ISSUER: str = "FastAPI"
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_TTL_SECONDS: int = 3600
     JWT_REFRESH_TOKEN_TTL_SECONDS: int = 86400
@@ -74,6 +76,7 @@ class Settings(BaseSettings):
     @property
     def jwt_config(self) -> JWTConfig:
         return JWTConfig(
+            issuer=self.JWT_ISSUER,
             secret_key=self.JWT_SECRET_KEY,
             algorithm=self.JWT_ALGORITHM,
             access_token_ttl=timedelta(seconds=self.JWT_ACCESS_TOKEN_TTL_SECONDS),
