@@ -2,7 +2,7 @@ from logging.config import fileConfig
 import asyncio
 
 from alembic import context
-from src.config.settings import get_settings
+from src.settings import get_settings
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
