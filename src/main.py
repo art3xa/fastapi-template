@@ -1,9 +1,14 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 
+from src.app.internal.core.auth.transport.handlers import auth_router
 from src.settings import get_settings
 
 settings = get_settings()
+
+api_router = APIRouter(prefix=settings.API_V1_STR)
+
+api_router.include_router(auth_router)
 
 app = FastAPI(
     debug=settings.DEBUG,
@@ -11,10 +16,12 @@ app = FastAPI(
     version=settings.API_VERSION,
 )
 
+app.include_router(api_router)
+
 
 @app.get("/")
 def root():
-    return {"message": "Hello World!"}
+    return {"message": "Hello World"}
 
 
 if __name__ == "__main__":
