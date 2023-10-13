@@ -36,3 +36,15 @@ async def get_current_user(
     if not user:
         raise HTTPException(status_code=403, detail="The owner of this access token has not been found")
     return user
+
+
+async def get_current_active_user(current_user: Annotated[User, Depends(get_current_user)]) -> User:
+    """
+    Get current active user.
+
+    :param current_user: current user.
+    :return: current active user.
+    """
+    if not current_user.is_active:
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user

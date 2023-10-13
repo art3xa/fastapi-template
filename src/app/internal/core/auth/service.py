@@ -1,7 +1,9 @@
 from fastapi import HTTPException
 
+from src.app.internal.core.auth.dto import TokensDTO
 from src.app.internal.core.auth.hash import get_password_hash, verify_password
-from src.app.internal.core.auth.middlewares.auth import JWTAuth
+from src.app.internal.core.auth.middlewares.auth import JWTAuth, TokenType
+from src.app.internal.core.auth.middlewares.utils import try_decode_token
 from src.app.internal.users.models import User
 from src.app.internal.users.repositories import UserRepository
 
@@ -18,7 +20,7 @@ class AuthService:
         user = await self.user_repository.create(email=email, hashed_password=get_password_hash(password))
         access_token, refresh_token = await self._issue_tokens(user=user)
 
-        return {"access_token": access_token, "refresh_token": refresh_token}
+        return TokensDTO(access_token=access_token, refresh_token=refresh_token)
 
     async def login(self, email: str, password: str) -> None:
         user = await self.user_repository.get_by_email(email=email)
@@ -30,7 +32,20 @@ class AuthService:
 
         access_token, refresh_token = await self._issue_tokens(user=user)
 
-        return {"access_token": access_token, "refresh_token": refresh_token}
+        return TokensDTO(access_token=access_token, refresh_token=refresh_token)
+
+    async def refresh_tokens(self, user: User, refresh_token: str) -> None:
+        payload, error = try_decode_token(jwt_auth=self.jwt_auth, token=refresh_token)
+
+        if error:
+            raise HTTPException(status_code=400, detail="Invalid token")
+
+        if payload.get("type") != TokenType.REFRESH.value:
+            raise HTTPException(status_code=400, detail="Invalid token type")
+
+        access_token, refresh_token = await self._issue_tokens(user=user)
+
+        return TokensDTO(access_token=access_token, refresh_token=refresh_token)
 
     async def _issue_tokens(self, user: User) -> dict[str, str]:
         access_token = self.jwt_auth.generate_access_token(subject=str(user.id), payload={})
