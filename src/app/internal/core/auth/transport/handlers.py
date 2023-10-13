@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from fastapi.security import OAuth2PasswordRequestForm
 
 from src.app.internal.core.auth.middlewares.service import get_current_user
@@ -59,10 +59,11 @@ async def login(
     status_code=200,
 )
 async def logout(
+    request: Request,
     current_user: Annotated[User, Depends(get_current_user)],
     auth_service: Annotated[AuthService, Depends(get_auth_service)],
 ) -> None:
-    await auth_service.logout(user=current_user)
+    await auth_service.logout(user=current_user, device_id=request.state.device_id)
     return SuccessOut()
 
 
@@ -86,12 +87,3 @@ async def refresh_tokens(
     """
     res = await auth_service.refresh_tokens(user=current_user, refresh_token=body.refresh_token)
     return res
-
-
-@auth_router.post("/me")
-async def me(
-    current_user: Annotated[User, Depends(get_current_user)],
-    auth_service: Annotated[AuthService, Depends(get_auth_service)],
-) -> None:
-    tokens = await auth_service.get_tokens(user=current_user)
-    return tokens, current_user

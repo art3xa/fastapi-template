@@ -21,6 +21,7 @@ services:
     container_name: database
     image: docker.io/bitnami/postgresql:16
     restart: always
+    user: root
     volumes:
       - './postgresql_data:/bitnami/postgresql'
     ports:
