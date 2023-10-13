@@ -25,6 +25,7 @@ if config.config_file_name is not None:
 
 from src.db.base import Base  # noqa
 from src.app.internal.users.models import User  # noqa
+from src.app.internal.core.auth.models import JWTToken  # noqa
 
 target_metadata = Base.metadata
 

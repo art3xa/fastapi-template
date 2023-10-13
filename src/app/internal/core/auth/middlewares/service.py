@@ -6,6 +6,7 @@ from jose import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.app.internal.core.auth.middlewares.auth import TokenType
+from src.app.internal.core.auth.models import JWTToken
 from src.app.internal.users.models import User
 from src.db.di import get_db
 from src.settings import get_settings
@@ -32,7 +33,22 @@ async def get_current_user(
     except jwt.JWTError:
         raise HTTPException(status_code=403, detail="The transferred token is invalid")
 
+    if (await db.get(JWTToken, payload.get("jti"))).is_blacklisted:
+        raise HTTPException(status_code=403, detail="The transferred token is blacklisted")
+
     user = await db.get(User, payload.get("sub"))
     if not user:
         raise HTTPException(status_code=403, detail="The owner of this access token has not been found")
     return user
+
+
+async def get_current_active_user(current_user: Annotated[User, Depends(get_current_user)]) -> User:
+    """
+    Get current active user.
+
+    :param current_user: current user.
+    :return: current active user.
+    """
+    if not current_user.is_active:
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user
