@@ -8,6 +8,6 @@ from src.app.internal.users.service import UserService
 from src.db.di import get_db
 
 
-def get_user_service(db_session: Annotated[AsyncSession, Depends(get_db)]) -> UserService:
+async def get_user_service(db_session: Annotated[AsyncSession, Depends(get_db)]) -> UserService:
     user_repo = UserRepository(db_session=db_session)
     return UserService(user_repo=user_repo)

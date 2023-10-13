@@ -31,7 +31,7 @@ class JWTTokenRepository:
         await self.db_session.commit()
         return jwt_token.scalar_one_or_none()
 
-    async def update_by_user_id(self, user_id: uuid.UUID, **kwargs) -> JWTToken:
+    async def update_by_user_id(self, user_id: uuid.UUID, **kwargs) -> None:
         stmt = update(JWTToken).where(JWTToken.user_id == user_id).values(**kwargs)
         await self.db_session.execute(stmt)
         await self.db_session.commit()

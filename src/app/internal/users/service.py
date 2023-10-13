@@ -7,5 +7,5 @@ class UserService:
     def __init__(self, user_repo: UserRepository):
         self.user_repo = user_repo
 
-    def get_me(self, user: User) -> UserProfileDTO:
+    async def get_me(self, user: User) -> UserProfileDTO:
         return UserProfileDTO.model_validate(user)
