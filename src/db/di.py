@@ -1,5 +1,6 @@
 from typing import AsyncGenerator
 
+from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from src.settings import get_settings
@@ -17,4 +18,10 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
     :yield: database session.
     """
     async with AsyncSessionLocal() as session:
-        yield session
+        try:
+            yield session
+        except HTTPException:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()

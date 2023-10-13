@@ -15,7 +15,11 @@ class AuthService:
 
     async def register(self, email: str, password: str) -> None:
         if await self.user_repository.get_by_email(email=email):
-            raise HTTPException(status_code=400, detail="This email is already occupied")
+            raise HTTPException(
+                status_code=400,
+                detail="Account already exists",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
 
         user = await self.user_repository.create(email=email, hashed_password=get_password_hash(password))
         access_token, refresh_token = await self._issue_tokens(user=user)
@@ -26,9 +30,9 @@ class AuthService:
         user = await self.user_repository.get_by_email(email=email)
 
         if not user:
-            raise HTTPException(status_code=404, detail="User not found")
+            raise HTTPException(status_code=400, detail="User not found", headers={"WWW-Authenticate": "Bearer"})
         if not verify_password(password, user.hashed_password):
-            raise HTTPException(status_code=400, detail="Incorrect password")
+            raise HTTPException(status_code=400, detail="Incorrect password", headers={"WWW-Authenticate": "Bearer"})
 
         access_token, refresh_token = await self._issue_tokens(user=user)
 
@@ -38,10 +42,10 @@ class AuthService:
         payload, error = try_decode_token(jwt_auth=self.jwt_auth, token=refresh_token)
 
         if error:
-            raise HTTPException(status_code=400, detail="Invalid token")
+            raise HTTPException(status_code=400, detail="Invalid token", headers={"WWW-Authenticate": "Bearer"})
 
         if payload.get("type") != TokenType.REFRESH.value:
-            raise HTTPException(status_code=400, detail="Invalid token type")
+            raise HTTPException(status_code=400, detail="Invalid token type", headers={"WWW-Authenticate": "Bearer"})
 
         access_token, refresh_token = await self._issue_tokens(user=user)
 
