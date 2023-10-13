@@ -14,7 +14,7 @@ down:
 	docker compose -f docker-compose-dev.yml down
 
 run:
-	poetry run uvicorn src.app.internal.main:app --reload --port 8000
+	poetry run uvicorn src.main:app --reload --port 8000
 
 add-dev-migration:
 	docker compose -f docker-compose-dev.yml exec app alembic revision --autogenerate && \
