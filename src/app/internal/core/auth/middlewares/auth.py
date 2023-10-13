@@ -22,6 +22,17 @@ class JWTAuth:
         """Initialize the JWTAuth class."""
         self._config = config
 
+    def generate_tokens(self, subject: str, payload: dict[str, Any]) -> tuple[str, str]:
+        """Generate access and refresh tokens.
+
+        :param subject: str
+        :param payload: dict[str, Any]
+        :return: str
+        """
+        access_token = self.generate_access_token(subject, payload)
+        refresh_token = self.generate_refresh_token(subject, payload)
+        return access_token, refresh_token
+
     def __sign_token(self, token_type: TokenType, subject: str, payload: dict[str, Any], ttl: timedelta) -> str:
         """Sign the token.
 

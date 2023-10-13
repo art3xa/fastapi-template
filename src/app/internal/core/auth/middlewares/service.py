@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import Depends, HTTPException
+from fastapi import Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -15,11 +15,14 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{get_settings().API_V1_STR}/auth
 
 
 async def get_current_user(
-    token: Annotated[str, Depends(oauth2_scheme)], db: Annotated[AsyncSession, Depends(get_db)]
+    request: Request,
+    token: Annotated[str, Depends(oauth2_scheme)],
+    db: Annotated[AsyncSession, Depends(get_db)],
 ) -> User:
     """
     Get current user from database.
 
+    :param request: request
     :param token: user token.
     :param db: database session.
     :return: user.
@@ -39,6 +42,7 @@ async def get_current_user(
     user = await db.get(User, payload.get("sub"))
     if not user:
         raise HTTPException(status_code=403, detail="The owner of this access token has not been found")
+    request.state.device_id = payload.get("device_id")
     return user
 
 
