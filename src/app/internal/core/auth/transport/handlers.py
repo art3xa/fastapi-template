@@ -7,7 +7,7 @@ from src.app.internal.core.auth.middlewares.service import get_current_user
 from src.app.internal.core.auth.service import AuthService
 from src.app.internal.core.auth.transport.di import get_auth_service
 from src.app.internal.core.auth.transport.requests import RefreshTokensIn
-from src.app.internal.core.auth.transport.responses import TokensOut
+from src.app.internal.core.auth.transport.responses import SuccessOut, TokensOut
 from src.app.internal.users.models import User
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
@@ -54,6 +54,19 @@ async def login(
 
 
 @auth_router.post(
+    path="/logout",
+    response_model=None,
+    status_code=200,
+)
+async def logout(
+    current_user: Annotated[User, Depends(get_current_user)],
+    auth_service: Annotated[AuthService, Depends(get_auth_service)],
+) -> None:
+    await auth_service.logout(user=current_user)
+    return SuccessOut()
+
+
+@auth_router.post(
     path="/refresh_tokens",
     response_model=TokensOut,
     status_code=200,
@@ -78,11 +91,7 @@ async def refresh_tokens(
 @auth_router.post("/me")
 async def me(
     current_user: Annotated[User, Depends(get_current_user)],
+    auth_service: Annotated[AuthService, Depends(get_auth_service)],
 ) -> None:
-    """
-    Get current user.
-
-    :param current_user:
-    :return:
-    """
-    return current_user
+    tokens = await auth_service.get_tokens(user=current_user)
+    return tokens, current_user

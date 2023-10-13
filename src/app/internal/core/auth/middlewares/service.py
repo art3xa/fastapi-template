@@ -6,6 +6,7 @@ from jose import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.app.internal.core.auth.middlewares.auth import TokenType
+from src.app.internal.core.auth.models import JWTToken
 from src.app.internal.users.models import User
 from src.db.di import get_db
 from src.settings import get_settings
@@ -31,6 +32,9 @@ async def get_current_user(
             raise HTTPException(status_code=403, detail="The passed token does not match the required type")
     except jwt.JWTError:
         raise HTTPException(status_code=403, detail="The transferred token is invalid")
+
+    if (await db.get(JWTToken, payload.get("jti"))).is_blacklisted:
+        raise HTTPException(status_code=403, detail="The transferred token is blacklisted")
 
     user = await db.get(User, payload.get("sub"))
     if not user:
