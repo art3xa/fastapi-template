@@ -2,5 +2,5 @@
 
 ## Run in docker
 
-- Run ```make```
--
+- Create ```.env``` file with the content from ```.env.example```
+- Run ```make``` to build and run the docker container

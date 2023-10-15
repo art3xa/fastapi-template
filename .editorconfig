@@ -8,7 +8,7 @@ trim_trailing_whitespace = true
 end_of_line = lf
 indent_style = space
 insert_final_newline = true
-indent_size = 2
+indent_size = 4
 
 [*.{py,pyi}]
 indent_size = 4
@@ -16,7 +16,7 @@ ij_python_from_import_parentheses_force_if_multiline = true
 
 [*.{yml,yaml}]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 [*.snap]
 trim_trailing_whitespace = false
