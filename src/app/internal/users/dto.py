@@ -7,4 +7,4 @@ class UserProfileDTO(BaseModel):
     id: UUID
     email: str
 
-    config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
