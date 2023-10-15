@@ -1,11 +1,10 @@
 from uuid import UUID
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class UserProfileDTO(BaseModel):
     id: UUID
     email: str
 
-    class Config:
-        from_attributes = True
+    config = ConfigDict(from_attributes=True)
