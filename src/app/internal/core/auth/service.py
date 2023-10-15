@@ -1,14 +1,14 @@
 from fastapi import HTTPException
 
-from src.app.internal.core.auth.dto import TokensDTO
-from src.app.internal.core.auth.hash import get_password_hash, verify_password
-from src.app.internal.core.auth.middlewares.auth import JWTAuth, TokenType
-from src.app.internal.core.auth.middlewares.utils import try_decode_token
-from src.app.internal.core.auth.models import JWTToken
-from src.app.internal.core.auth.repositories import JWTTokenRepository
-from src.app.internal.core.auth.utils import generate_device_id
-from src.app.internal.users.models import User
-from src.app.internal.users.repositories import UserRepository
+from app.internal.core.auth.dto import TokensDTO
+from app.internal.core.auth.hash import get_password_hash, verify_password
+from app.internal.core.auth.middlewares.auth import JWTAuth, TokenType
+from app.internal.core.auth.middlewares.utils import try_decode_token
+from app.internal.core.auth.models import JWTToken
+from app.internal.core.auth.repositories import JWTTokenRepository
+from app.internal.core.auth.utils import generate_device_id
+from app.internal.users.models import User
+from app.internal.users.repositories import UserRepository
 
 
 class AuthService:

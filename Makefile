@@ -1,6 +1,7 @@
 all: build down up
 
 install:
+	cd src && \
 	poetry shell && \
 	poetry install
 
@@ -14,7 +15,8 @@ down:
 	docker compose -f docker-compose-dev.yml down
 
 run:
-	poetry run uvicorn src.main:app --reload --port 8000
+	cd src && \
+	poetry run uvicorn app.main:app --reload --port 8000
 
 add-dev-migration:
 	docker compose -f docker-compose-dev.yml exec app alembic revision --autogenerate && \
@@ -22,21 +24,27 @@ add-dev-migration:
 	echo "Migration added and applied."
 
 test:
+	cd src && \
 	poetry run pytest
 
 cov:
+	cd src && \
 	poetry run pytest --cov
 
 lint:
-	poetry run ruff src
-	poetry run black src --check
+	cd src && \
+	poetry run ruff app && \
+	poetry run black app --check
 
 lint-watch:
+	cd src
 	poetry run ruff src --watch
 
 lint-fix:
-	poetry run ruff src --fix
-	poetry run black src
+	cd src && \
+	poetry run ruff app --fix && \
+	poetry run black app
 
 mypy:
-	poetry run mypy src
+	cd src && \
+	poetry run mypy app

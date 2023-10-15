@@ -5,8 +5,8 @@ from uuid import uuid4
 
 from jose import jwt
 
-from src.app.internal.core.auth.utils import convert_to_timestamp
-from src.settings import JWTConfig
+from app.internal.core.auth.utils import convert_to_timestamp
+from config.settings import JWTConfig
 
 
 @unique

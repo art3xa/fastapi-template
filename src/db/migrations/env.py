@@ -2,7 +2,7 @@ from logging.config import fileConfig
 import asyncio
 
 from alembic import context
-from src.settings import get_settings
+from config.settings import get_settings
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
@@ -23,9 +23,9 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 
-from src.db.base import Base  # noqa
-from src.app.internal.users.models import User  # noqa
-from src.app.internal.core.auth.models import JWTToken  # noqa
+from db.base import Base  # noqa
+from app.internal.users.models import User  # noqa
+from app.internal.core.auth.models import JWTToken  # noqa
 
 target_metadata = Base.metadata
 

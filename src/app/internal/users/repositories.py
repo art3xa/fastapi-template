@@ -1,6 +1,6 @@
 from sqlalchemy import select
 
-from src.app.internal.users.models import User
+from app.internal.users.models import User
 
 
 class UserRepository:

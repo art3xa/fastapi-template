@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Boolean, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from src.db.base import Base
+from db.base import Base
 
 
 class JWTToken(Base):

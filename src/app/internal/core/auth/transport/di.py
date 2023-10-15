@@ -3,12 +3,12 @@ from typing import Annotated
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.app.internal.core.auth.middlewares.auth import JWTAuth
-from src.app.internal.core.auth.repositories import JWTTokenRepository
-from src.app.internal.core.auth.service import AuthService
-from src.app.internal.users.repositories import UserRepository
-from src.db.di import get_db
-from src.settings import get_settings
+from app.internal.core.auth.middlewares.auth import JWTAuth
+from app.internal.core.auth.repositories import JWTTokenRepository
+from app.internal.core.auth.service import AuthService
+from app.internal.users.repositories import UserRepository
+from config.settings import get_settings
+from db.di import get_db
 
 
 async def get_auth_service(db_session: Annotated[AsyncSession, Depends(get_db)]) -> AuthService:

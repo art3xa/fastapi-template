@@ -2,7 +2,7 @@ import uuid
 
 from sqlalchemy import and_, select, update
 
-from src.app.internal.core.auth.models import JWTToken
+from app.internal.core.auth.models import JWTToken
 
 
 class JWTTokenRepository:

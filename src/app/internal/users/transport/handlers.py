@@ -2,11 +2,11 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends
 
-from src.app.internal.core.auth.middlewares.service import get_current_user
-from src.app.internal.users.models import User
-from src.app.internal.users.service import UserService
-from src.app.internal.users.transport.di import get_user_service
-from src.app.internal.users.transport.responses import UserProfileOut
+from app.internal.core.auth.middlewares.service import get_current_user
+from app.internal.users.models import User
+from app.internal.users.service import UserService
+from app.internal.users.transport.di import get_user_service
+from app.internal.users.transport.responses import UserProfileOut
 
 users_router = APIRouter(prefix="/users", tags=["users"])
 
