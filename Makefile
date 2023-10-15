@@ -24,6 +24,9 @@ add-dev-migration:
 test:
 	poetry run pytest
 
+cov:
+	poetry run pytest --cov
+
 lint:
 	poetry run ruff src
 	poetry run black src --check
