@@ -5,7 +5,7 @@ services:
     container_name: app
     build: ./
     restart: always
-    command: "sh -c 'alembic upgrade head && uvicorn src.main:app --reload --workers 3 --host 0.0.0.0 --port 8000'"
+    command: "sh -c 'poetry run alembic upgrade head && poetry run uvicorn src.main:app --reload --workers 3 --host 0.0.0.0 --port 8000'"
     volumes:
       - ./:/code
     ports:
@@ -19,7 +19,7 @@ services:
 
   database:
     container_name: database
-    image: docker.io/bitnami/postgresql:16
+    image: docker.io/bitnami/postgresql:latest
     restart: always
     user: root
     volumes:
@@ -38,7 +38,7 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_USERNAME=${DATABASE_USERNAME}
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_DATABASE=${DATABASE_NAME}
-      - POSTGRES_HOST_AUTH_METHOD="trust"
+      - POSTGRESQL_USERNAME=${DATABASE_USERNAME}
+      - POSTGRESQL_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRESQL_DATABASE=${DATABASE_NAME}
+      - POSTGRESQL_HOST_AUTH_METHOD="trust"

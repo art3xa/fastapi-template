@@ -19,4 +19,4 @@ RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; els
 ENV PYTHONPATH=/code
 EXPOSE 8000
 
-#CMD ["uvicorn", "src.app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+#CMD ["poetry", "run", "uvicorn", "src.app.main:app", "--host", "0.0.0.0", "--port", "8000"]

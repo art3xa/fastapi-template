@@ -33,6 +33,10 @@ httpx = "^0.25.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.urls]
+"Homepage" = "https://github.com/art3xa/fastapi-template"
+"Bug Tracker" = "https://github.com/art3xa/fastapi-template/issues"
+
 [tool.black]
 line-length = 120
 target-version = [ "py311" ]
