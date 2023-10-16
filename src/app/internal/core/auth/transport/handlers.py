@@ -29,8 +29,7 @@ async def register(
     :param auth_service:
     :return:
     """
-    res = await auth_service.register(email=form_data.username, password=form_data.password)
-    return res
+    return await auth_service.register(email=form_data.username, password=form_data.password)
 
 
 @auth_router.post(
@@ -41,7 +40,7 @@ async def register(
 async def login(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     auth_service: Annotated[AuthService, Depends(get_auth_service)],
-) -> None:
+) -> TokensOut:
     """
     Login user.
 
@@ -49,20 +48,19 @@ async def login(
     :param auth_service:
     :return:
     """
-    res = await auth_service.login(email=form_data.username, password=form_data.password)
-    return res
+    return await auth_service.login(email=form_data.username, password=form_data.password)
 
 
 @auth_router.post(
     path="/logout",
-    response_model=None,
+    response_model=SuccessOut,
     status_code=200,
 )
 async def logout(
     request: Request,
     current_user: Annotated[User, Depends(get_current_user)],
     auth_service: Annotated[AuthService, Depends(get_auth_service)],
-) -> None:
+) -> SuccessOut:
     await auth_service.logout(user=current_user, device_id=request.state.device_id)
     return SuccessOut()
 
@@ -76,7 +74,7 @@ async def refresh_tokens(
     body: RefreshTokensIn,
     current_user: Annotated[User, Depends(get_current_user)],
     auth_service: Annotated[AuthService, Depends(get_auth_service)],
-) -> None:
+) -> TokensOut:
     """
     Refresh access token.
 
@@ -85,5 +83,4 @@ async def refresh_tokens(
     :param auth_service:
     :return:
     """
-    res = await auth_service.refresh_tokens(user=current_user, refresh_token=body.refresh_token)
-    return res
+    return await auth_service.refresh_tokens(user=current_user, refresh_token=body.refresh_token)

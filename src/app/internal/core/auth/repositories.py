@@ -1,12 +1,13 @@
 import uuid
 
 from sqlalchemy import and_, select, update
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.internal.core.auth.models import JWTToken
 
 
 class JWTTokenRepository:
-    def __init__(self, db_session):
+    def __init__(self, db_session: AsyncSession):
         self.db_session = db_session
 
     async def create(self, user_id: uuid.UUID, jti: str, device_id: str) -> JWTToken:
@@ -16,16 +17,16 @@ class JWTTokenRepository:
         await self.db_session.refresh(jwt_token)
         return jwt_token
 
-    async def get_by_user_id(self, user_id: uuid.UUID) -> JWTToken:
+    async def get_by_user_id(self, user_id: uuid.UUID) -> list[JWTToken]:
         stmt = select(JWTToken).where(JWTToken.user_id == user_id)
         jwt_tokens = await self.db_session.execute(stmt)
         return jwt_tokens.scalars().all()
 
-    async def get_by_jti(self, jti: str) -> JWTToken:
+    async def get_by_jti(self, jti: str) -> JWTToken | None:
         jwt_token = await self.db_session.get(JWTToken, jti)
         return jwt_token
 
-    async def update(self, jti: str, **kwargs) -> JWTToken:
+    async def update(self, jti: str, **kwargs) -> JWTToken | None:
         stmt = update(JWTToken).where(JWTToken.jti == jti).values(**kwargs).returning(JWTToken)
         jwt_token = await self.db_session.execute(stmt)
         await self.db_session.commit()

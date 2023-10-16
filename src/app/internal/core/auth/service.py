@@ -12,7 +12,7 @@ from app.internal.users.repositories import UserRepository
 
 
 class AuthService:
-    def __init__(self, user_repo: UserRepository, jwt_token_repo: JWTTokenRepository, jwt_auth: JWTAuth):
+    def __init__(self, user_repo: UserRepository, jwt_token_repo: JWTTokenRepository, jwt_auth: JWTAuth) -> None:
         self.user_repo = user_repo
         self.jwt_token_repo = jwt_token_repo
         self.jwt_auth = jwt_auth

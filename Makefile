@@ -47,4 +47,4 @@ lint-fix:
 
 mypy:
 	cd src && \
-	poetry run mypy app
+	poetry run mypy app --explicit-package-bases
