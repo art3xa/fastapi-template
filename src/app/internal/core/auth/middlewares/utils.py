@@ -1,6 +1,6 @@
 from jose import JWTError
 
-from app.internal.core.auth.middlewares.auth import JWTAuth
+from src.app.internal.core.auth.middlewares.auth import JWTAuth
 
 
 def try_decode_token(jwt_auth: JWTAuth, token: str) -> tuple[dict, None] | tuple[None, JWTError]:

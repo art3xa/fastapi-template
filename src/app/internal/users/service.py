@@ -1,6 +1,6 @@
-from app.internal.users.dto import UserProfileDTO
-from app.internal.users.models import User
-from app.internal.users.repositories import UserRepository
+from src.app.internal.users.dto import UserProfileDTO
+from src.app.internal.users.models import User
+from src.app.internal.users.repositories import UserRepository
 
 
 class UserService:

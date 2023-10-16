@@ -3,7 +3,7 @@ from typing import AsyncGenerator
 from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from config.settings import get_settings
+from src.config.settings import get_settings
 
 settings = get_settings()
 

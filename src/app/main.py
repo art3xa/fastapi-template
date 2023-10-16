@@ -1,9 +1,9 @@
 import uvicorn
 from fastapi import APIRouter, FastAPI
 
-from app.internal.core.auth.transport.handlers import auth_router
-from app.internal.users.transport.handlers import users_router
-from config.settings import get_settings
+from src.app.internal.core.auth.transport.handlers import auth_router
+from src.app.internal.users.transport.handlers import users_router
+from src.config.settings import get_settings
 
 settings = get_settings()
 

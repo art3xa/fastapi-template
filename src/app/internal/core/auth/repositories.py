@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import and_, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.internal.core.auth.models import JWTToken
+from src.app.internal.core.auth.models import JWTToken
 
 
 class JWTTokenRepository:

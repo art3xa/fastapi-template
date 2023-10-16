@@ -3,11 +3,11 @@ version: "3.8"
 services:
   app:
     container_name: app
-    build: ./src
+    build: ./
     restart: always
-    command: "sh -c 'poetry run alembic upgrade head && poetry run uvicorn app.main:app --reload --workers 3 --host 0.0.0.0 --port 8000'"
+    command: "sh -c 'poetry run alembic upgrade head && poetry run uvicorn src.app.main:app --reload --workers 3 --host 0.0.0.0 --port 8000'"
     volumes:
-      - ./src/:/code
+      - ./:/code
     ports:
       - "8000:8000"
     depends_on:
@@ -42,4 +42,3 @@ services:
       - POSTGRESQL_USERNAME=${DATABASE_USERNAME}
       - POSTGRESQL_PASSWORD=${DATABASE_PASSWORD}
       - POSTGRESQL_DATABASE=${DATABASE_NAME}
-      - POSTGRESQL_HOST_AUTH_METHOD="trust"
