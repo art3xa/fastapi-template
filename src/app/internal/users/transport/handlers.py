@@ -21,3 +21,15 @@ async def me(
     users_service: Annotated[UserService, Depends(get_user_service)],
 ) -> UserProfileOut:
     return users_service.get_me(current_user)
+
+
+@users_router.get(
+    path="/{user_id}",
+    response_model=UserProfileOut,
+    status_code=200,
+)
+async def get_user(
+    user_id: str,
+    users_service: Annotated[UserService, Depends(get_user_service)],
+) -> UserProfileOut:
+    return await users_service.get_user(user_id)
