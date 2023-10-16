@@ -40,15 +40,15 @@ cov:
 	poetry run pytest --cov
 
 lint:
-	poetry run ruff app && \
-	poetry run black app --check
+	poetry run ruff src
+	poetry run black src --check
 
 lint-watch:
 	poetry run ruff src --watch
 
 lint-fix:
-	poetry run ruff app --fix && \
-	poetry run black app
+	poetry run ruff src --fix
+	poetry run black src
 
 mypy:
-	poetry run mypy app
+	poetry run mypy src

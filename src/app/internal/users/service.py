@@ -15,4 +15,7 @@ class UserService:
     async def get_user(self, user_id: str) -> UserProfileDTO:
         user = await self.user_repo.get(uuid.UUID(user_id))
         return UserProfileDTO.model_validate(user)
-    
+
+    async def get_users(self) -> list[UserProfileDTO]:
+        users = await self.user_repo.get_all()
+        return [UserProfileDTO.model_validate(user) for user in users]
