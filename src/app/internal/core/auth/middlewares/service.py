@@ -56,3 +56,15 @@ async def get_current_active_user(current_user: Annotated[User, Depends(get_curr
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
+
+
+async def get_current_superuser(current_user: Annotated[User, Depends(get_current_active_user)]) -> User:
+    """
+    Get current superuser.
+
+    :param current_user: current user.
+    :return: current superuser.
+    """
+    if not current_user.is_superuser:
+        raise HTTPException(status_code=400, detail="The user does not have enough privileges")
+    return current_user
