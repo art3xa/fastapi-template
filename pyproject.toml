@@ -6,7 +6,7 @@ authors = ["art3xa <artem.romanov.03@bk.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.12"
+python = "^3.11"
 fastapi = "^0.104.0"
 uvicorn = "^0.23.2"
 sqlalchemy = "^2.0.22"
@@ -14,20 +14,28 @@ pydantic-settings = "^2.0.3"
 alembic = "^1.12.0"
 asyncpg = "^0.28.0"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
-passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-multipart = "^0.0.6"
+validators = "^0.22.0"
+passlib = "^1.7.4"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
-mypy = "^1.6.0"
 ruff = "^0.1.1"
+mypy = "^1.6.1"
 black = "^23.10.0"
+pylint = "^3.0.1"
+flake8 = "^6.1.0"
+httpx = "^0.25.0"
 pytest-cov = "^4.1.0"
 pytest-randomly = "^3.15.0"
 pytest-profiling = "^1.7.0"
 pytest-timeout = "^2.2.0"
-httpx = "^0.25.0"
+flake8-todo = "^0.7"
+faker = "^19.11.0"
+pytest-asyncio = "^0.21.1"
+bandit = "^1.7.5"
+isort = "^5.12.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -86,7 +94,23 @@ ignore = [
 known-third-party = ["fastapi", "pydantic", "starlette"]
 
 [tool.mypy]
+plugins = ["sqlalchemy.ext.mypy.plugin"]
+python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
 exclude = ["alembic", "__pycache__", "^config\\.py$", "^env\\.py$",]
+
+[tool.isort]
+skip_glob = ["src/db/*"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers -W error"
+junit_family = "xunit2"
+testpaths = ["src/tests"]
+xfail_strict = true
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning"
+]
+

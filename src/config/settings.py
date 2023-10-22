@@ -8,9 +8,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class ModeEnum(str, Enum):
-    development = "development"
-    production = "production"
-    testing = "testing"
+    DEVELOPMENT = "DEVELOPMENT"
+    PRODUCTION = "PRODUCTION"
+    TESTING = "TESTING"
 
 
 @dataclass
@@ -18,8 +18,8 @@ class JWTConfig:
     issuer: str
     secret_key: str
     algorithm: str
-    access_token_ttl: timedelta = None
-    refresh_token_ttl: timedelta = None
+    access_token_ttl: timedelta
+    refresh_token_ttl: timedelta
 
 
 class Settings(BaseSettings):
@@ -32,7 +32,7 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True, env_file_encoding="utf-8")
 
-    MODE: ModeEnum = ModeEnum.development
+    MODE: ModeEnum = ModeEnum.DEVELOPMENT
     BASE_URL: str = "http://127.0.0.1:8000"
     API_VERSION: str = "v1"
     API_V1_STR: str = f"/api/{API_VERSION}"
@@ -41,7 +41,7 @@ class Settings(BaseSettings):
 
     DATABASE_USERNAME: str = "postgres"
     DATABASE_PASSWORD: str = "postgres"
-    DATABASE_HOST: str = "localhost"
+    DATABASE_HOST: str = "database"
     DATABASE_PORT: int = 5432
     DATABASE_NAME: str = "postgres"
 

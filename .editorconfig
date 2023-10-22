@@ -16,7 +16,7 @@ ij_python_from_import_parentheses_force_if_multiline = true
 
 [*.{yml,yaml}]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
 [*.snap]
 trim_trailing_whitespace = false
