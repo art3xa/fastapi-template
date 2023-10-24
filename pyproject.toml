@@ -72,7 +72,6 @@ exclude = [
   "src/db/migrations/*",
 ]
 select = [
-    "ALL",
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
     "F",  # pyflakes
