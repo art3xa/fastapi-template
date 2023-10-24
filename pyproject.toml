@@ -72,6 +72,7 @@ exclude = [
   "src/db/migrations/*",
 ]
 select = [
+    "ALL",
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
     "F",  # pyflakes
@@ -111,6 +112,6 @@ testpaths = ["src/tests"]
 xfail_strict = true
 filterwarnings = [
     "error",
-    "ignore::DeprecationWarning"
+    "error::DeprecationWarning"
 ]
 
