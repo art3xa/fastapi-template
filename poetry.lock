@@ -420,13 +420,13 @@ gmpy2 = ["gmpy2"]
 
 [[package]]
 name = "faker"
-version = "19.12.0"
+version = "19.12.1"
 description = "Faker is a Python package that generates fake data for you."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Faker-19.12.0-py3-none-any.whl", hash = "sha256:5990380a8ee81cf189d6b85d5fdc1fb43772cb136aca0385a08ff24ef01b9fdf"},
-    {file = "Faker-19.12.0.tar.gz", hash = "sha256:91438f6b1713274ec3f24970ba303617be86ce5caf6f6a0776f1d04777b6ff5f"},
+    {file = "Faker-19.12.1-py3-none-any.whl", hash = "sha256:02ae846940cc1a4d65dbda510fbc63a0d7b7de980f746d581d0a763b300eab24"},
+    {file = "Faker-19.12.1.tar.gz", hash = "sha256:ea511a6d8e56ae9705b1e583a500baa2ed2dc4c5a31e36e5ef0aa84eb76659e4"},
 ]
 
 [package.dependencies]
@@ -1698,4 +1698,4 @@ tooling-extras = ["pyaml (>=23.7.0)", "pypandoc-binary (>=1.11)", "pytest (>=7.4
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "21bd6dda512ea2d4d96b867b022eaafb90db8abcd5428a2d7ec602e50aef1593"
+content-hash = "ae926b43effef157462ab7d701265c75e56a4944f6704fa7150e8eebc635974a"
