@@ -18,7 +18,7 @@ test:
 	poetry run pytest
 
 cov:
-	poetry run pytest --cov src/app/internal/homework/
+	poetry run pytest --cov
 
 format:
 	poetry run ruff $(CODE_FOLDERS) $(TEST_FOLDERS)  --fix
