@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "fastapi-template"
 version = "0.1.0"
-description = ""
+description = "FastAPI template"
 authors = ["art3xa <artem.romanov.03@bk.ru>"]
 readme = "README.md"
 
