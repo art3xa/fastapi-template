@@ -20,23 +20,24 @@ passlib = "^1.7.4"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.2"
 ruff = "^0.1.5"
 mypy = "^1.7.0"
 black = "^23.11.0"
 pylint = "^3.0.2"
 flake8 = "^6.1.0"
-httpx = "^0.25.1"
+flake8-todo = "^0.7"
+isort = "^5.12.0"
+pytest = "^7.4.2"
 pytest-cov = "^4.1.0"
 pytest-randomly = "^3.15.0"
 pytest-profiling = "^1.7.0"
 pytest-timeout = "^2.2.0"
-flake8-todo = "^0.7"
-faker = "^20.0.0"
-pytest-asyncio = "^0.21.1"
-bandit = "^1.7.5"
-isort = "^5.12.0"
 pytest-freezer = "^0.4.8"
+pytest-asyncio = "^0.21.1"
+httpx = "^0.25.1"
+faker = "^20.0.0"
+bandit = "^1.7.5"
+
 
 [build-system]
 requires = ["poetry-core"]
