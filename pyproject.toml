@@ -104,6 +104,8 @@ ignore_missing_imports = true
 exclude = ["alembic", "__pycache__", "^config\\.py$", "^env\\.py$",]
 
 [tool.isort]
+py_version = 311
+line_length = 120
 skip_glob = ["src/db/*"]
 
 [tool.pytest.ini_options]

@@ -24,9 +24,12 @@ format:
 	poetry run ruff $(CODE_FOLDERS) $(TEST_FOLDERS)  --fix
 	poetry run isort $(CODE_FOLDERS) $(TEST_FOLDERS)
 	poetry run black $(CODE_FOLDERS) $(TEST_FOLDERS)
+	poetry run flake8 $(CODE_FOLDERS) $(TEST_FOLDERS)
+	poetry run pylint $(CODE_FOLDERS) $(TEST_FOLDERS)
 
 lint:
 	poetry run ruff $(CODE_FOLDERS) $(TEST_FOLDERS)
+	poetry run isort --check --diff $(CODE_FOLDERS) $(TEST_FOLDERS)
 	poetry run black --check $(CODE_FOLDERS) $(TEST_FOLDERS)
 	poetry run flake8 $(CODE_FOLDERS) $(TEST_FOLDERS)
 	poetry run pylint $(CODE_FOLDERS) $(TEST_FOLDERS)
