@@ -11,6 +11,7 @@ services:
         - "8000:8000"
     logging:
       driver: json-file
+    restart: on-failure
 
   tests:
     container_name: app-tests
