@@ -14,11 +14,12 @@ RUN pip install poetry
 
 # Copy only requirements to cache them in docker layer
 COPY pyproject.toml poetry.lock README.md ./
-COPY ./src ./src
 
 # Project initialization:
 RUN poetry config virtualenvs.create false \
     && poetry install
+
+COPY ./src ./src
 
 # Application entrypoint
 CMD ["pytest", "--cov", "src/app/internal/homework/"]
