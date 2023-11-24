@@ -19,5 +19,7 @@ COPY pyproject.toml poetry.lock README.md ./
 RUN poetry config virtualenvs.create false \
     && poetry install
 
+COPY . .
+
 # Application entrypoint
-CMD ["uvicorn", "src.app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+#CMD ["uvicorn", "src.app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

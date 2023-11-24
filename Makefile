@@ -1,7 +1,7 @@
 CODE_FOLDERS := src/app src/db src/config
 TEST_FOLDERS := src/tests
 
-.PHONY: install update test lint security_checks format lint-watch db_upgrade db_seed db_start build up down run-prod up-prod down-prod cov
+.PHONY: install update test lint security_checks format lint-watch migrate db_seed db_start build up down run-prod up-prod down-prod cov
 
 all: build down up
 
@@ -38,13 +38,13 @@ lint:
 lint-watch:
 	poetry run ruff $(CODE_FOLDERS) $(TEST_FOLDERS) --watch
 
-db_upgrade:
+migrate:
 	alembic upgrade head
 
 db_seed:
 	python -m seed
 
-db_start: db_upgrade db_seed
+db_start: migrate db_seed
 
 build:
 	docker compose build
