@@ -1,5 +1,10 @@
 # FastAPI-Template
 
+[![Deploy application](https://github.com/art3xa/fastapi-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/art3xa/fastapi-template/actions/workflows/deploy.yml)
+[![Static Checks](https://github.com/art3xa/fastapi-template/actions/workflows/ci.yml/badge.svg)](https://github.com/art3xa/fastapi-template/actions/workflows/ci.yml)
+[![](https://tokei.rs/b1/github/art3xa/fastapi-template)](https://github.com/art3xa/fastapi-template)
+[![Hits-of-Code](https://hitsofcode.com/github/art3xa/fastapi-template?branch=main)](https://hitsofcode.com/github/art3xa/fastapi-template/view?branch=main)
+
 [FastAPI Template](https://github.com/art3xa/fastapi-template) with JWT Authentication
 
 ## Usage
