@@ -7,6 +7,25 @@
 
 [FastAPI Template](https://github.com/art3xa/fastapi-template) with JWT Authentication
 
+## Technologies used
+- Python
+- Poetry
+- FastAPI
+- SQLAlchemy v2
+- Alembic
+- Asyncpg
+- PostgreSQL
+- Pydantic v2
+- Pytest
+- Docker
+- Docker Compose
+
+## Swagger
+
+![][swagger]
+
+### You can check and open [openapi.json] in [swagger editor](https://editor.swagger.io/) or [redoc](https://redocly.github.io/redoc/)
+
 ## Usage
 
 ### Preparation
@@ -15,7 +34,7 @@
 ```bash
 make install
 ```
-- Create ```.env``` file with the content from ```.env.example```
+- Create ```.env``` file with the content from [.env.example]
 ```bash
 cp .env.example .env
 ```
@@ -41,3 +60,29 @@ make migrate
 ```bash
 make run
 ```
+
+### Other Makefile commands
+- Run tests
+```bash
+make test
+```
+- Run tests coverage
+```bash
+make cov
+```
+- Run linters
+```bash
+make lint
+```
+- Run formatters
+```bash
+make format
+```
+
+---
+
+[.env.example]: .env.example ".env.example"
+
+[swagger]: docs/images/swagger.png "swagger"
+
+[openapi.json]: docs/openapi.json "openapi.json"

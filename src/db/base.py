@@ -9,4 +9,4 @@ class Base(DeclarativeBase):
     @declared_attr.directive
     def __tablename__(cls) -> str:
         """Return the table name for the model."""
-        return f"{cls.__name__.lower()}"
+        return f"{cls.__name__.lower()}s"
