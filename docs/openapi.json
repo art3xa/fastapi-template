@@ -1,0 +1,511 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "v1"
+    },
+    "paths": {
+        "/api/v1/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Register",
+                "description": "Register a new user.\n\n:param form_data:\n:param auth_service:\n:return:",
+                "operationId": "register_api_v1_auth_register_post",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_register_api_v1_auth_register_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokensOut"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Login",
+                "description": "Login user.\n\n:param form_data:\n:param auth_service:\n:return:",
+                "operationId": "login_api_v1_auth_login_post",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_login_api_v1_auth_login_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokensOut"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logout",
+                "operationId": "logout_api_v1_auth_logout_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessOut"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/refresh_tokens": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Refresh Tokens",
+                "description": "Refresh access token.\n\n:param body:\n:param current_user:\n:param auth_service:\n:return:",
+                "operationId": "refresh_tokens_api_v1_auth_refresh_tokens_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RefreshTokensIn"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TokensOut"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/me": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Me",
+                "operationId": "me_api_v1_users_me_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserProfileOut"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get User",
+                "operationId": "get_user_api_v1_users__user_id__get",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "User Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserProfileOut"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get Users",
+                "operationId": "get_users_api_v1_users_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "items": {
+                                        "$ref": "#/components/schemas/UserProfileOut"
+                                    },
+                                    "type": "array",
+                                    "title": "Response Get Users Api V1 Users Get"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "summary": "Root",
+                "operationId": "root__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Body_login_api_v1_auth_login_post": {
+                "properties": {
+                    "grant_type": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "pattern": "password"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Grant Type"
+                    },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "title": "Scope",
+                        "default": ""
+                    },
+                    "client_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Client Id"
+                    },
+                    "client_secret": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Client Secret"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "username",
+                    "password"
+                ],
+                "title": "Body_login_api_v1_auth_login_post"
+            },
+            "Body_register_api_v1_auth_register_post": {
+                "properties": {
+                    "grant_type": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "pattern": "password"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Grant Type"
+                    },
+                    "username": {
+                        "type": "string",
+                        "title": "Username"
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "Password"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "title": "Scope",
+                        "default": ""
+                    },
+                    "client_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Client Id"
+                    },
+                    "client_secret": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Client Secret"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "username",
+                    "password"
+                ],
+                "title": "Body_register_api_v1_auth_register_post"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "RefreshTokensIn": {
+                "properties": {
+                    "refresh_token": {
+                        "type": "string",
+                        "title": "Refresh Token"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "refresh_token"
+                ],
+                "title": "RefreshTokensIn"
+            },
+            "SuccessOut": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "title": "SuccessOut"
+            },
+            "TokensOut": {
+                "properties": {
+                    "access_token": {
+                        "type": "string",
+                        "title": "Access Token"
+                    },
+                    "refresh_token": {
+                        "type": "string",
+                        "title": "Refresh Token"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "access_token",
+                    "refresh_token"
+                ],
+                "title": "TokensOut"
+            },
+            "UserProfileOut": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Id"
+                    },
+                    "email": {
+                        "type": "string",
+                        "title": "Email"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "email"
+                ],
+                "title": "UserProfileOut"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        },
+        "securitySchemes": {
+            "OAuth2PasswordBearer": {
+                "type": "oauth2",
+                "flows": {
+                    "password": {
+                        "scopes": {},
+                        "tokenUrl": "/api/v1/auth/login"
+                    }
+                }
+            }
+        }
+    }
+}

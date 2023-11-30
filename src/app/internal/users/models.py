@@ -7,7 +7,7 @@ from src.db.base import Base
 
 
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id: Mapped[uuid.UUID] = mapped_column(UUID, primary_key=True, index=True, nullable=False, default=uuid.uuid4)
     email: Mapped[str] = mapped_column(String(length=256), unique=True, index=True, nullable=False)
