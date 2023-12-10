@@ -4,6 +4,8 @@
 [![Static Checks](https://github.com/art3xa/fastapi-template/actions/workflows/ci.yml/badge.svg)](https://github.com/art3xa/fastapi-template/actions/workflows/ci.yml)
 [![](https://tokei.rs/b1/github/art3xa/fastapi-template)](https://github.com/art3xa/fastapi-template)
 [![Hits-of-Code](https://hitsofcode.com/github/art3xa/fastapi-template?branch=main)](https://hitsofcode.com/github/art3xa/fastapi-template/view?branch=main)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4b56ef8c3d1f1beeea22/maintainability)](https://codeclimate.com/github/art3xa/fastapi-template/maintainability)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fart3xa%2Ffastapi-template&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 [FastAPI Template](https://github.com/art3xa/fastapi-template) with JWT Authentication
 
