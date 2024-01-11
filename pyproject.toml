@@ -35,7 +35,7 @@ pytest-timeout = "^2.2.0"
 pytest-freezer = "^0.4.8"
 pytest-asyncio = "^0.23.3"
 httpx = "^0.26.0"
-faker = "^22.1.0"
+faker = "^22.2.0"
 bandit = "^1.7.6"
 
 
