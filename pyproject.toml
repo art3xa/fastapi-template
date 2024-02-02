@@ -22,7 +22,7 @@ passlib = "^1.7.4"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.14"
 mypy = "^1.8.0"
-black = "^24.1.0"
+black = "^24.1.1"
 pylint = "^3.0.3"
 flake8 = "^7.0.0"
 flake8-todo = "^0.7"
