@@ -1685,16 +1685,16 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 
 [[package]]
 name = "validators"
-version = "0.24.0"
+version = "0.26.0"
 description = "Python Data Validation for Humans™"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "validators-0.24.0-py3-none-any.whl", hash = "sha256:4a99eb368747e60900bae947418eb21e230ff4ff5e7b7944b9308c456d86da32"},
-    {file = "validators-0.24.0.tar.gz", hash = "sha256:cd23defb36de42d14e7559cf0757f761bb46b10d9de2998e6ef805f769d859e3"},
+    {file = "validators-0.26.0-py3-none-any.whl", hash = "sha256:61234f9303c54b30bacdb566c57b176aee510ad7f168301f67c28158af46208c"},
+    {file = "validators-0.26.0.tar.gz", hash = "sha256:004e15ed83145454e8db90d66dcee063f1084b81e447310b52c5f91022823150"},
 ]
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f061d4b4837b3d4928efebd540027fb7120d4bd31b750ef108a9e73afc9a9ce2"
+content-hash = "ec2158fcc97a0f79f8f336396e96f5bb45cb77e63238ac8a1e1b6a7032e55569"
