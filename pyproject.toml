@@ -15,7 +15,7 @@ alembic = "^1.13.1"
 asyncpg = "^0.29.0"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 python-multipart = "^0.0.9"
-validators = "^0.28.1"
+validators = "^0.28.2"
 passlib = "^1.7.4"
 
 
