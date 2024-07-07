@@ -1996,14 +1996,17 @@ test = ["Cython (>=0.29.36,<0.30.0)", "aiohttp (==3.9.0b0)", "aiohttp (>=3.8.1)"
 
 [[package]]
 name = "validators"
-version = "0.28.3"
+version = "0.30.0"
 description = "Python Data Validation for Humans™"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "validators-0.28.3-py3-none-any.whl", hash = "sha256:53cafa854f13850156259d9cc479b864ee901f6a96e6b109e6fc33f98f37d99f"},
-    {file = "validators-0.28.3.tar.gz", hash = "sha256:c6c79840bcde9ba77b19f6218f7738188115e27830cbaff43264bc4ed24c429d"},
+    {file = "validators-0.30.0-py3-none-any.whl", hash = "sha256:0f2387a9fe76d26c151ab716de18e34467413800abced256fd3a506f4f51cbdc"},
+    {file = "validators-0.30.0.tar.gz", hash = "sha256:c2dc5ffef052040bc11b62677429a904f9e04abaf35e0196ac509237cd3c9961"},
 ]
+
+[package.extras]
+crypto-eth-addresses = ["eth-hash[pycryptodome] (>=0.7.0)"]
 
 [[package]]
 name = "watchfiles"
@@ -2176,4 +2179,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "5ad95a365221d88b95ae92d40f82c693590eb80f7a5679dc7f5e0fc37b9fcfba"
+content-hash = "dd8d3735f905315792fdafaa3d324d44f4e0458f0d911e52967a3a44df9086f2"
