@@ -449,13 +449,13 @@ gmpy2 = ["gmpy2"]
 
 [[package]]
 name = "faker"
-version = "35.0.0"
+version = "35.2.1"
 description = "Faker is a Python package that generates fake data for you."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Faker-35.0.0-py3-none-any.whl", hash = "sha256:926d2301787220e0554c2e39afc4dc535ce4b0a8d0a089657137999f66334ef4"},
-    {file = "faker-35.0.0.tar.gz", hash = "sha256:42f2da8cf561e38c72b25e9891168b1e25fec42b6b0b5b0b6cd6041da54af885"},
+    {file = "Faker-35.2.1-py3-none-any.whl", hash = "sha256:7f75ac8c654e6274282cb85244eddce24815961585a8395bfdcf57079194b150"},
+    {file = "faker-35.2.1.tar.gz", hash = "sha256:58066f85143954337cde60ade88ca31ba3e258ccb820510a0ff1eb5a65e28b9d"},
 ]
 
 [package.dependencies]
@@ -1697,4 +1697,4 @@ crypto-eth-addresses = ["eth-hash[pycryptodome] (>=0.7.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "78bddedae56debce8e585a50ae6de07a8152e4e3ec8d7d9d6d0dd51839e6bcfe"
+content-hash = "eca22fe00f8ab5f7e4a841a44496792c135843f3f79a05ff19bb4befcf012d06"
