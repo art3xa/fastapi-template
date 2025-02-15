@@ -449,18 +449,17 @@ gmpy2 = ["gmpy2"]
 
 [[package]]
 name = "faker"
-version = "35.0.0"
+version = "36.1.1"
 description = "Faker is a Python package that generates fake data for you."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 files = [
-    {file = "Faker-35.0.0-py3-none-any.whl", hash = "sha256:926d2301787220e0554c2e39afc4dc535ce4b0a8d0a089657137999f66334ef4"},
-    {file = "faker-35.0.0.tar.gz", hash = "sha256:42f2da8cf561e38c72b25e9891168b1e25fec42b6b0b5b0b6cd6041da54af885"},
+    {file = "Faker-36.1.1-py3-none-any.whl", hash = "sha256:ad1f1be7fd692ec0256517404a9d7f007ab36ac5d4674082fa72404049725eaa"},
+    {file = "faker-36.1.1.tar.gz", hash = "sha256:7cb2bbd4c8f040e4a340ae4019e9a48b6cf1db6a71bda4e5a61d8d13b7bef28d"},
 ]
 
 [package.dependencies]
-python-dateutil = ">=2.4"
-typing-extensions = "*"
+tzdata = "*"
 
 [[package]]
 name = "fastapi"
@@ -1657,6 +1656,17 @@ files = [
 ]
 
 [[package]]
+name = "tzdata"
+version = "2025.1"
+description = "Provider of IANA time zone data"
+optional = false
+python-versions = ">=2"
+files = [
+    {file = "tzdata-2025.1-py2.py3-none-any.whl", hash = "sha256:7e127113816800496f027041c570f50bcd464a020098a3b6b199517772303639"},
+    {file = "tzdata-2025.1.tar.gz", hash = "sha256:24894909e88cdb28bd1636c6887801df64cb485bd593f2fd83ef29075a81d694"},
+]
+
+[[package]]
 name = "uvicorn"
 version = "0.34.0"
 description = "The lightning-fast ASGI server."
@@ -1691,4 +1701,4 @@ crypto-eth-addresses = ["eth-hash[pycryptodome] (>=0.7.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "1770545192a7af14b600a49cceb6ae96bee1dafe666449bf70f883d752869304"
+content-hash = "8ff4ddf24ccf9ef87b4ca9eb0ddc3f8ace33dea61157fd19286c0940d03af9ba"
