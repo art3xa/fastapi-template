@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.115.8"
+fastapi = "^0.115.9"
 uvicorn = "^0.34.0"
 sqlalchemy = "^2.0.38"
 pydantic-settings = "^2.7.1"
