@@ -10,7 +10,7 @@ python = "^3.11"
 fastapi = "^0.115.8"
 uvicorn = "^0.34.0"
 sqlalchemy = "^2.0.38"
-pydantic-settings = "^2.7.1"
+pydantic-settings = "^2.8.1"
 alembic = "^1.14.1"
 asyncpg = "^0.30.0"
 python-jose = {extras = ["cryptography"], version = "^3.4.0"}
