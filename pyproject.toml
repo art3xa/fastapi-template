@@ -36,7 +36,7 @@ pytest-freezer = "^0.4.9"
 pytest-asyncio = "^1.0.0"
 httpx = "^0.28.1"
 faker = "^37.4.0"
-bandit = "^1.8.3"
+bandit = "^1.8.5"
 
 
 [build-system]
