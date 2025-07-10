@@ -11,7 +11,7 @@ fastapi = "^0.115.14"
 uvicorn = "^0.35.0"
 sqlalchemy = "^2.0.41"
 pydantic-settings = "^2.10.1"
-alembic = "^1.16.3"
+alembic = "^1.16.4"
 asyncpg = "^0.30.0"
 python-jose = {extras = ["cryptography"], version = "^3.5.0"}
 python-multipart = "^0.0.20"
