@@ -20,7 +20,7 @@ passlib = "^1.7.4"
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.12.8"
+ruff = "^0.12.10"
 mypy = "^1.17.1"
 black = "^25.1.0"
 pylint = "^3.3.8"
