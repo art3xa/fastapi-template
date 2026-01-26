@@ -14,7 +14,7 @@ pydantic-settings = "^2.10.1"
 alembic = "^1.16.5"
 asyncpg = "^0.30.0"
 python-jose = {extras = ["cryptography"], version = "^3.5.0"}
-python-multipart = "^0.0.20"
+python-multipart = "^0.0.22"
 validators = "^0.35.0"
 passlib = "^1.7.4"
 
